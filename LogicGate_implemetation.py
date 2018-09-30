@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep 28 22:04:40 2018
-
-@author: Людмла
-"""
-
-
 class LogicGate:
     def __init__(self, n):
         self.label = n
