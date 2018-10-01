@@ -1,7 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Sep 28 15:47:03 2018
+
+@author: Roman
+"""
+
 class LogicGate:
     def __init__(self, n):
         self.label = n
-        self.outpuy = None
+        self.output = None
         
     def getLabel(self):
         return self.label
@@ -101,6 +108,36 @@ class NotGate(UnaryGate):
             return 0
         else:
             return 1
+
+class NAndGate(BinaryGate):
+    
+    def __init__(self, n):
+        super(NAndGate, self).__init__(n)
+    
+    def performGateLogic(self):
+        pinA = self.getPinA()
+        pinB = self.getPinB()
+        
+        if not(pinA == 1 and pinB == 1) == 1:
+            return 1
+        else:
+            return 0
+
+class NOrGate(BinaryGate):
+    
+    def __init__(self, n):
+        super(NOrGate, self).__init__(n)
+    
+    def performGateLogic(self):
+        pinA = self.getPinA()
+        pinB = self.getPinB()
+        
+        if not(pinA == 1 or pinB == 1) == 1:
+            return 1
+        else:
+            return 0
+        
+        
         
 class Connector:
     
@@ -124,17 +161,26 @@ class Connector:
 #orGate = OrGate("G2")
 #print(orGate.getOutput())
 #
-#notGate = NotGate("G3")
-#print(notGate.getOutput())
+#norGate = NOrGate("G3")
+#print(norGate.getOutput())
 
-g1 = AndGate("G1")
-g2 = AndGate("G2")
-g3 = OrGate("G3")
-g4 = NotGate("G4")
+#g1 = AndGate("G1")
+#g2 = AndGate("G2")
+#g3 = OrGate("G3")
+#g4 = NotGate("G4")
+#
+#c1 = Connector(g1, g3)
+#c2 = Connector(g2, g3)
+#c3 = Connector(g3, g4)
+#
+#print(g4.getOutput())
+        
+g1 = OrGate("Gate#1")
+g2 = NOrGate("Gate#2")
+g3 = NAndGate("Gate#3")
+g4 = NotGate("Gate#4")
 
 c1 = Connector(g1, g3)
 c2 = Connector(g2, g3)
 c3 = Connector(g3, g4)
-
 print(g4.getOutput())
-        
