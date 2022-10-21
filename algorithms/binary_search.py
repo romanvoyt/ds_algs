@@ -1,9 +1,9 @@
-class Algo:
+class BinarySearch:
     def __init__(self, array: list, item: int):
         self.array = array
         self.item = item
 
-    def binary_search(self):
+    def search(self):
         low = 0
         high = len(self.array)
 
